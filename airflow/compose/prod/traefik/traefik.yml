@@ -22,7 +22,7 @@ certificatesResolvers:
   letsencrypt:
     # https://docs.traefik.io/master/https/acme/#lets-encrypt
     acme:
-      email: "mailbox@mail.airflow.orangutan-stem.com" # need to adjust this
+      email: "mailbox@localhost" # need to adjust this
       storage: /etc/traefik/acme/acme.json
       # https://docs.traefik.io/master/https/acme/#httpchallenge
       httpChallenge:
@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`airflow.orangutan-stem.com`)" # need to adjust this
+      rule: "Host(`localhost`)" # need to adjust this
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`airflow.orangutan-stem.com`)" # need to adjust this
+      rule: "Host(`localhost`)" # need to adjust this
       entryPoints:
         - flower
       service: flower
